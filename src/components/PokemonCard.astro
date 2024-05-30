@@ -1,0 +1,47 @@
+---
+import { PokemonsInfo } from '../services/fetching'
+
+interface Props {
+	title: string;
+	href: string;
+}
+const { href, title,  } = Astro.props;
+
+const pokemonImg = await PokemonsInfo(href);
+
+const type = await PokemonsInfo(href)
+---
+<div class="card">
+	<div class="card_content">
+		<h2 class="title">{title}</h2>
+		<h3>type: {type.types[0].type.name}</h3>
+	</div>
+	<div class="card_img">
+		<img src={pokemonImg.sprites.other["official-artwork"].front_default} alt="">
+	</div>
+	
+</div>
+
+<style>
+	.card{
+		background: linear-gradient(to right,#ff0000,#fff);
+		margin: 1em;
+		width: 25%;
+		display: flex;
+		border-radius: 2em;
+	}
+	.card_content{
+		display: inline-block;
+		line-height: 2em;
+		width: 50%;
+		font-size: 1em
+
+	}
+	.card_img{
+		width: 50%;
+	}
+	img{
+		width: 100%;
+	}
+	
+</style>

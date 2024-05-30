@@ -1,0 +1,11 @@
+---
+import { getPokemons } from '../services/fetching'
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+}
+
+let data = await getPokemons();
+
+---
